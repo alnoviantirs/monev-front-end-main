@@ -53,6 +53,11 @@ export default function LoginPage() {
             error={errors.username ? true : false}
             helpertext={errors.username?.message}
           />
+          {errors.username && (
+            <Typography color="red" variant="small">
+              {errors.username.message}
+            </Typography>
+          )}
         </div>
 
         <div className="mb-4">
@@ -63,6 +68,11 @@ export default function LoginPage() {
             error={errors.password ? true : false}
             helpertext={errors.password?.message}
           />
+          {errors.username && (
+            <Typography color="red" variant="small">
+              {errors.password.message}
+            </Typography>
+          )}
         </div>
 
         <div className="mb-4 flex items-center">

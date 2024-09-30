@@ -25,6 +25,7 @@ export const loginUser = async (userData) => {
     
   } catch (error) {
     console.error("Login Failed: ", error);
+    throw error;
   }
 };
 
@@ -46,3 +47,8 @@ export const useCheckTokenAndRedirect = (urlWithToken, urlWithoutToken) => {
     }
   })
 }
+
+export const logoutUser = () => {
+  Cookies.remove("token");
+  window.location.href = "/";
+};
