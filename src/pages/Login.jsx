@@ -5,8 +5,9 @@ import { loginSchema } from "../validators/loginSchema";
 import { loginUser } from "../services/authService";
 import { Button, Input, Checkbox, Typography } from "@material-tailwind/react";
 import { useAuthStore } from "../hooks/useAuthStore";
+// import  loginUser  from "../services/authService";
 
-export default function Login() {
+export default function LoginPage() {
   const setAuth = useAuthStore((state) => state.setAuth);
 
   // Setup React Hook Form
@@ -21,7 +22,7 @@ export default function Login() {
   // Mutation for Login
   const mutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      // Simpan token atau info user ke Zustand
+      // Simpan token atau info user ke Zustand 
       setAuth(data);
       alert("Login successful!");
     },
@@ -47,10 +48,10 @@ export default function Login() {
 
         <div className="mb-4">
           <Input
-            {...register("email")}
-            label="Email"
-            error={errors.email ? true : false}
-            helperText={errors.email?.message}
+            {...register("username")}
+            label="Username"
+            error={errors.username ? true : false}
+            helpertext={errors.username?.message}
           />
         </div>
 
@@ -60,7 +61,7 @@ export default function Login() {
             label="Password"
             type="password"
             error={errors.password ? true : false}
-            helperText={errors.password?.message}
+            helpertext={errors.password?.message}
           />
         </div>
 

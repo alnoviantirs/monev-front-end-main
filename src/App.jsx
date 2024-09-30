@@ -1,11 +1,10 @@
-import React from "react";
-import { LoginCard } from "./components/organisms/LoginCard"; // Import sesuai struktur folder
+// import React from "react";
+
+import RouterConfig from "./routers/RouterConfig";
 
 function App() {
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <LoginCard />
-    </div>
+    <RouterConfig />
   );
 }
 
