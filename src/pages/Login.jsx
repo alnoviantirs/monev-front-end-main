@@ -5,6 +5,7 @@ import { loginSchema } from "../validators/loginSchema";
 import { loginUser } from "../services/authService";
 import { Button, Input, Checkbox, Typography } from "@material-tailwind/react";
 import { useAuthStore } from "../hooks/useAuthStore";
+import yourImage from "../assets/seaqis-login.png";
 // import  loginUser  from "../services/authService";
 
 export default function LoginPage() {
@@ -22,7 +23,7 @@ export default function LoginPage() {
   // Mutation for Login
   const mutation = useMutation(loginUser, {
     onSuccess: (data) => {
-      // Simpan token atau info user ke Zustand 
+      // Simpan token atau info user ke Zustand
       setAuth(data);
       alert("Login successful!");
     },
@@ -134,7 +135,7 @@ export default function LoginPage() {
 
           {/* Gambar JPG di sebelah kanan atas */}
           <div className="absolute top-3 right-3">
-            <img src="/logo-seaqis.png" alt="New Image" className="w-14 h-14" />
+            <img src={yourImage} alt="New Image" className="w-14 h-14" />
           </div>
         </div>
       </div>
@@ -169,7 +170,6 @@ export default function LoginPage() {
           />
         </svg>
       </div>
-
     </div>
   );
 }
