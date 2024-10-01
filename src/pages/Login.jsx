@@ -16,6 +16,7 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
   } = useForm({
     resolver: zodResolver(loginSchema),
   });
@@ -32,10 +33,17 @@ export default function LoginPage() {
     },
   });
 
+  // Watch values for username and password
+  const username = watch("username");
+  const password = watch("password");
+
   // Handle form submission
   const onSubmit = (data) => {
     mutation.mutate(data);
   };
+
+  // Determine if both fields are filled
+  const isFormFilled = username && password;
 
   return (
     <div className="relative flex justify-center items-center min-h-screen bg-[#EAF7EF]">
@@ -97,9 +105,32 @@ export default function LoginPage() {
             <Checkbox {...register("rememberMe")} label="Remember Me" />
           </div>
 
-          <Button type="submit" fullWidth disabled={mutation.isLoading}>
+          <Button
+            type="submit"
+            fullWidth
+            disabled={mutation.isLoading || !isFormFilled}
+            style={{
+              backgroundColor: isFormFilled
+                ? "#089749" // Menggunakan HEX untuk warna hijau
+                : "#C0C0C0", // Menggunakan HEX untuk warna abu-abu
+              color: isFormFilled ? "white" : "gray",
+              cursor: isFormFilled ? "pointer" : "not-allowed",
+              transition: "background-color 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              if (isFormFilled) {
+                e.target.style.backgroundColor = "#46f797"; // Sedikit lebih terang untuk hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (isFormFilled) {
+                e.target.style.backgroundColor = "#089749"; // Kembali ke warna hijau
+              }
+            }}
+          >
             {mutation.isLoading ? "Signing In..." : "Sign In"}
           </Button>
+
 
           {mutation.isError && (
             <Typography color="red" className="mt-4 text-center">
