@@ -68,14 +68,18 @@ export default function LoginPage() {
           onSubmit={handleSubmit(onSubmit)}
           className="p-8 w-1/2 flex flex-col justify-center"
         >
-          <Typography variant="h4" className="mb-4">
+          <Typography variant="h1" className="absolute top-10 left-8">
             Sign In
           </Typography>
 
           <div className="mb-4">
+            <label className="block text-gray-800 text-sm font-bold mb-3" htmlFor="username">
+              Username
+            </label>
             <Input
               {...register("username")}
-              label="Username"
+              id="username" // Menambahkan id untuk label dan input
+              label="Enter your username"
               error={errors.username ? true : false}
               helpertext={errors.username?.message}
             />
@@ -87,9 +91,12 @@ export default function LoginPage() {
           </div>
 
           <div className="mb-4">
+            <label className="block text-gray-800 text-sm font-bold mb-3" htmlFor="password">
+              Password
+            </label>
             <Input
               {...register("password")}
-              label="Password"
+              label="Enter your password"
               type="password"
               error={errors.password ? true : false}
               helpertext={errors.password?.message}
@@ -165,7 +172,7 @@ export default function LoginPage() {
           </svg>
 
           {/* Gambar JPG di sebelah kanan atas */}
-          <div className="absolute top-3 right-3">
+          <div className="absolute top-12 right-9">
             <img src={yourImage} alt="New Image" className="w-14 h-14" />
           </div>
         </div>
