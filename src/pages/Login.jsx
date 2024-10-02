@@ -6,6 +6,7 @@ import { loginUser } from "../services/authService";
 import { Button, Input, Checkbox, Typography } from "@material-tailwind/react";
 import { useAuthStore } from "../hooks/useAuthStore";
 import yourImage from "../assets/seaqis-login.png";
+import Swal from "sweetalert2";
 // import  loginUser  from "../services/authService";
 
 export default function LoginPage() {
@@ -26,10 +27,20 @@ export default function LoginPage() {
     onSuccess: (data) => {
       // Simpan token atau info user ke Zustand
       setAuth(data);
-      alert("Login successful!");
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful",
+        text: "You have successfully logged in!",
+        confirmButtonColor: "#089749",
+      });
     },
     onError: (error) => {
-      alert("Login failed! " + error.response?.data?.message || error.message);
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed",
+        text: error.response?.data?.message || error.message,
+        confirmButtonColor: "#d33",
+      });
     },
   });
 
@@ -73,7 +84,10 @@ export default function LoginPage() {
           </Typography>
 
           <div className="mb-4">
-            <label className="block text-gray-800 text-sm font-bold mb-3" htmlFor="username">
+            <label
+              className="block text-gray-800 text-sm font-bold mb-3"
+              htmlFor="username"
+            >
               Username
             </label>
             <Input
@@ -91,7 +105,10 @@ export default function LoginPage() {
           </div>
 
           <div className="mb-4">
-            <label className="block text-gray-800 text-sm font-bold mb-3" htmlFor="password">
+            <label
+              className="block text-gray-800 text-sm font-bold mb-3"
+              htmlFor="password"
+            >
               Password
             </label>
             <Input
@@ -137,7 +154,6 @@ export default function LoginPage() {
           >
             {mutation.isLoading ? "Signing In..." : "Sign In"}
           </Button>
-
 
           {mutation.isError && (
             <Typography color="red" className="mt-4 text-center">
