@@ -11,27 +11,28 @@ export const ParticipantCard = () => {
             {/* Header Section */}
             <div className="flex flex-wrap items-center justify-between mb-4">
                 <div className="flex flex-wrap items-center">
-                    <h2 className="text-gray-700 text-lg font-bold mr-2">Participant</h2>
-                    <div className="flex items-center mr-4">
+                    <h2 className="text-gray-700 font-bold mr-2">Participant</h2>
+                    <div className="flex items-center mr-2">
                         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: colors[0] }}></span>
-                        <span className="text-gray-700 text-sm ml-1">Male</span>
+                        <span className="text-gray-700 text-xs ml-1">Male</span>
                     </div>
                     <div className="flex items-center">
                         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: colors[1] }}></span>
-                        <span className="text-gray-700 text-sm ml-1">Female</span>
+                        <span className="text-gray-700 text-xs ml-1">Female</span>
                     </div>
                 </div>
-                <button className="mt-2 sm:mt-0 bg-green-500 text-white py-1 px-4 rounded-md hover:bg-green-700">
+                {/* Button View All di kanan atas */}
+                <button className="absolute right-4 bg-green-500 text-white text-xs py-1 px-4 rounded-md hover:bg-green-700">
                     View All
                 </button>
             </div>
 
             {/* Navigation Arrows */}
             <div className="absolute left-0 right-0 top-1/2 flex justify-between items-center transform -translate-y-1/2">
-                <div className="cursor-pointer p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+                <div className="cursor-pointer p-2">
                     <FaAngleLeft className="text-gray-700" />
                 </div>
-                <div className="cursor-pointer p-2 bg-gray-200 rounded-full hover:bg-gray-300">
+                <div className="cursor-pointer p-2">
                     <FaAngleRight className="text-gray-700" />
                 </div>
             </div>
