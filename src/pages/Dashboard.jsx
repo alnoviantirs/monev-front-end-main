@@ -17,6 +17,10 @@ const DashboardPage = () => {
             <ChartCard />
         </div>
 
+          <div className="mb-6">
+              <PostTestResultCards />
+          </div>
+
       <Button
         color="red"
         onClick={logoutUser}
